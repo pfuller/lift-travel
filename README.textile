@@ -1,0 +1,3 @@
+h1. Lift Travel
+
+A sample application that deals with the real time purchasing of last moment flight deals. Its all fictional of course but is discussed at length in Timothy Perrett's "Lift in Action" book published by Manning.
