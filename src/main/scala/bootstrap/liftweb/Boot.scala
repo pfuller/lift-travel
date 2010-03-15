@@ -10,9 +10,10 @@ import net.liftweb.sitemap.Loc._
 import net.liftweb.mapper.{DB,Schemifier,DefaultConnectionIdentifier,StandardDBVendor}
 
 // app imports
-import example.travel.model.{Destination}
+import example.travel.model.{Destination,Journey,Order,Supplier,User}
+// import example.travel.lib.{Helpers}
 
-class Boot {
+class Boot extends Loggable {
   def boot {
     LiftRules.addToPackages("example.travel")
     
@@ -20,28 +21,47 @@ class Boot {
     DefaultConnectionIdentifier.jndiName = "jdbc/liftinaction"
     
     // handle JNDI not being avalible
-    if (!DB.jndiJdbcConnAvailable_?) {
-      Log.error("No JNDI configured - using the default in-memory database.") 
+    if (!DB.jndiJdbcConnAvailable_?){
+      logger.error("No JNDI configured - using the default in-memory database.") 
       DB.defineConnectionManager(DefaultConnectionIdentifier, Application.database)
+      // make sure cyote unloads database connections before shutting down
+      LiftRules.unloadHooks.append(() => Application.database.closeAllConnections_!()) 
     }
     
     // automatically create the tables
-    Schemifier.schemify(true, Log.infoF _, Destination)
+    Schemifier.schemify(true, Log.infoF _, 
+      Destination, Journey, Order, Supplier, User)
     
-    // make sure cyote unloads database connections before shutting down
-    LiftRules.unloadHooks.append(() => Application.database.closeAllConnections_!()) 
+    LiftRules.loggedInTest = Full(() => User.loggedIn_?)
     
     // set the application sitemap
     LiftRules.setSiteMap(SiteMap(Application.sitemap:_*))
+    
+    // setup the load pattern
+    S.addAround(DB.buildLoanWrapper)
+    
+    // make requests utf-8
+    LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
   }
 }
 
 object Application {
   val sitemap = 
-    Menu(Loc("Home", List("index"), "Home")) ::
-    Menu(Loc("About", List("about"), "About")) ::
-    Menu(Loc("Search", List("search"), "Search")) ::
-    Menu(Loc("Contact", List("contact"), "Contact")) :: Nil
+    Menu(Loc("Home", List("index"), "Home", LocGroup("public"))) ::
+    Menu(Loc("About", List("about"), "About", LocGroup("public"))) ::
+    Menu(Loc("Search", List("search"), "Search", LocGroup("public"))) ::
+    Menu(Loc("Contact", List("contact"), "Contact", LocGroup("public"))) ::
+    Menu(Loc("Admin", List("admin","index"), "Admin", LocGroup("admin"), User.loginFirst)) ::
+    Menu(Loc("Destinations", List("admin", "destinations"), "Destinations", LocGroup("admin"), User.loginFirst), 
+      Destination.menus : _*
+    ) ::
+    Menu(Loc("Suppliers", List("admin", "suppliers"), "Suppliers", LocGroup("admin"), User.loginFirst), 
+      Supplier.menus : _*
+    ) ::
+    Menu(Loc("Users", List("admin", "users"), "Users", LocGroup("admin")), 
+      User.menus : _*
+    ) :: Nil
+    
   
   val database = DBVendor
   

@@ -17,7 +17,9 @@
       </div>
       <!-- end logo -->
       <div id="menu">
-        <lift:menu.builder />
+        <lift:menu.builder linkToSelf="true" group="public"
+          li:class="link1" />
+          
         <!-- <ul>
           <li class="first"><a href="#" id="menu1" accesskey="1" title="" class="link1">Home</a></li>
           <li><a href="#" id="menu2" accesskey="2" title="" class="link1">Search</a></li>
@@ -31,11 +33,11 @@
         <div class="topbg">
           <div class="bottombg">
             <div id="splash">
-              <h2>Lorem Ipsum Dolor</h2>
+              <h2>Lift Travel</h2>
               <p class="text1">
-                <strong>Etiam dolore</strong> sectetuer adipiscing elit sed diam nonummy nibh blandit
+                Enjoy <strong>real-time</strong> web applications powered by the Lift web framework
               </p>
-              <p><a href="#" class="link2">Learn more &gt;&gt;</a></p>
+              <p><a href="about" class="link2">Learn more &gt;&gt;</a></p>
             </div>
             <!-- end splash -->
             <div id="content">
@@ -60,7 +62,9 @@
     <!-- end wrapper -->
     
     <div id="footer">
-      <p class="text2">Copyright &copy; 2010 Travelsite.com. All rights reserved.</p>
+      <p class="text2">
+        Built with Lift <lift:version_info.lift />, on <lift:version_info.date />
+      </p>
     </div>
     
   </body>

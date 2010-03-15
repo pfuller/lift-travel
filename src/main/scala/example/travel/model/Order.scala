@@ -5,7 +5,9 @@ package model {
   import net.liftweb.util.{Log}
   import net.liftweb.mapper._
   
-  object Order extends Order with LongKeyedMetaMapper[Order]
+  object Order extends Order with LongKeyedMetaMapper[Order]{
+    override def dbTableName = "orders"
+  }
 
   class Order extends LongKeyedMapper[Order] with IdPK {
     def getSingleton = Order

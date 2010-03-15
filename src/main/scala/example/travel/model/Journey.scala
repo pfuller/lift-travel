@@ -5,7 +5,10 @@ package model {
   import net.liftweb.util.{Log}
   import net.liftweb.mapper._
   
-  object Journey extends Journey with LongKeyedMetaMapper[Journey]
+  object Journey 
+    extends Journey 
+    with LongKeyedMetaMapper[Journey]
+    with CRUDify[Long,Journey]
 
   class Journey extends LongKeyedMapper[Journey] with IdPK {
     def getSingleton = Journey
