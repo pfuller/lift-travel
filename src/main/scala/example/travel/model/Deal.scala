@@ -5,13 +5,13 @@ package model {
   import net.liftweb.util.{Log}
   import net.liftweb.mapper._
   
-  object Journey 
-    extends Journey 
-    with LongKeyedMetaMapper[Journey]
-    with CRUDify[Long,Journey]
+  object Deal 
+    extends Deal 
+    with LongKeyedMetaMapper[Deal]
+    with CRUDify[Long,Deal]
 
-  class Journey extends LongKeyedMapper[Journey] with IdPK {
-    def getSingleton = Journey
+  class Deal extends LongKeyedMapper[Deal] with IdPK {
+    def getSingleton = Deal
     // fields
     object name extends MappedString(this, 150)
     object close_date extends MappedDateTime(this)

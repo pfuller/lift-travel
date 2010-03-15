@@ -10,7 +10,7 @@ import net.liftweb.sitemap.Loc._
 import net.liftweb.mapper.{DB,Schemifier,DefaultConnectionIdentifier,StandardDBVendor}
 
 // app imports
-import example.travel.model.{Destination,Journey,Order,Supplier,User}
+import example.travel.model.{Deal,Order,Supplier,Customer,Bid}
 // import example.travel.lib.{Helpers}
 
 class Boot extends Loggable {
@@ -32,10 +32,10 @@ class Boot extends Loggable {
     Schemifier.schemify(true, Log.infoF _, 
       Destination, Journey, Order, Supplier, User)
     
-    LiftRules.loggedInTest = Full(() => User.loggedIn_?)
+    // LiftRules.loggedInTest = Full(() => User.loggedIn_?)
     
     // set the application sitemap
-    LiftRules.setSiteMap(SiteMap(Application.sitemap:_*))
+    // LiftRules.setSiteMap(SiteMap(Application.sitemap:_*))
     
     // setup the load pattern
     S.addAround(DB.buildLoanWrapper)

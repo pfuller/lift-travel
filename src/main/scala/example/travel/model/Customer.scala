@@ -9,9 +9,9 @@ package model {
   import net.liftweb.sitemap.Loc._
   import scala.xml.{NodeSeq,Node}
   
-  object User extends User 
-      with KeyedMetaMapper[Long, User]
-      with MetaMegaProtoUser[User]{
+  object Customer extends Customer 
+      with KeyedMetaMapper[Long, Customer]
+      with MetaMegaProtoUser[Customer]{
     
     override def dbTableName = "users"
     
@@ -27,8 +27,8 @@ package model {
       email :: password :: Nil
    
   }
-  class User extends MegaProtoUser[User] {
-    def getSingleton = User
+  class Customer extends MegaProtoUser[Customer] {
+    def getSingleton = Customer
   }
   
 }}
