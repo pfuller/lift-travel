@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>eu.getintheloop</groupId>
+    <artifactId>sbt-stax-plugin</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+    <dependencies>
+        <dependency>
+            <groupId>net.stax</groupId>
+            <artifactId>stax-api-client</artifactId>
+            <version>1.0.20090908-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.stax</groupId>
+            <artifactId>stax-appserver</artifactId>
+            <version>1.0.20090908-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.7.7</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+    <repositories>
+        <repository>
+            <id>ScalaToolsNexus</id>
+            <name>Scala Tools Nexus</name>
+            <url>http://nexus.scala-tools.org/content/repositories/releases/</url>
+        </repository>
+        <repository>
+            <id>staxreleaserepo</id>
+            <name>stax-release-repo</name>
+            <url>http://mvn.stax.net/content/repositories/public/</url>
+        </repository>
+        <repository>
+            <id>ScalaToolsMaven2Repository</id>
+            <name>Scala-Tools Maven2 Repository</name>
+            <url>http://scala-tools.org/repo-releases/</url>
+        </repository>
+    </repositories>
+</project>

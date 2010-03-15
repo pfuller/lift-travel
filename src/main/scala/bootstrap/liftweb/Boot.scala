@@ -52,13 +52,21 @@ object Application {
     Menu(Loc("Search", List("search"), "Search", LocGroup("public"))) ::
     Menu(Loc("Contact", List("contact"), "Contact", LocGroup("public"))) ::
     Menu(Loc("Admin", List("admin","index"), "Admin", LocGroup("admin"), User.loginFirst)) ::
-    Menu(Loc("Destinations", List("admin", "destinations"), "Destinations", LocGroup("admin"), User.loginFirst), 
+    Menu(Loc("Destinations", List("admin", "destinations"), "Destinations", 
+      LocGroup("admin"), 
+      EarlyResponse(() => Full(RedirectResponse("destination/list"))), 
+      User.loginFirst), 
       Destination.menus : _*
     ) ::
-    Menu(Loc("Suppliers", List("admin", "suppliers"), "Suppliers", LocGroup("admin"), User.loginFirst), 
+    Menu(Loc("Suppliers", List("admin", "suppliers"), "Suppliers", 
+      LocGroup("admin"), 
+      EarlyResponse(() => Full(RedirectResponse("supplier/list"))), 
+      User.loginFirst), 
       Supplier.menus : _*
     ) ::
-    Menu(Loc("Users", List("admin", "users"), "Users", LocGroup("admin")), 
+    Menu(Loc("Users", List("admin", "users"), "Users", 
+      LocGroup("admin"), 
+      EarlyResponse(() => Full(RedirectResponse("/admin/")))), 
       User.menus : _*
     ) :: Nil
     
