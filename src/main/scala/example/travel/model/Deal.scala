@@ -2,7 +2,6 @@ package example.travel {
 package model {
   
   import net.liftweb.common.{Full,Box,Empty,Failure}
-  import net.liftweb.util.{Log}
   import net.liftweb.mapper._
   
   object Deal 
@@ -19,8 +18,9 @@ package model {
     
     // relationships
     object supplier extends LongMappedMapper(this, Supplier)
-    object destination extends LongMappedMapper(this, Destination)
     
+    // helper: get all the bids 
+    def bids = Bid.findAll(By(Bid.deal, this.id), OrderBy(Bid.id, Descending))
   }
   
   

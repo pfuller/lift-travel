@@ -10,7 +10,7 @@ import net.liftweb.sitemap.Loc._
 import net.liftweb.mapper.{DB,Schemifier,DefaultConnectionIdentifier,StandardDBVendor}
 
 // app imports
-import example.travel.model.{Deal,Order,Supplier,Customer,Bid}
+import example.travel.model.{Deal,Supplier,Customer,Bid}
 // import example.travel.lib.{Helpers}
 
 class Boot extends Loggable {
@@ -30,12 +30,12 @@ class Boot extends Loggable {
     
     // automatically create the tables
     Schemifier.schemify(true, Log.infoF _, 
-      Destination, Journey, Order, Supplier, User)
+      Bid, Deal, Supplier, Customer)
     
     // LiftRules.loggedInTest = Full(() => User.loggedIn_?)
     
     // set the application sitemap
-    // LiftRules.setSiteMap(SiteMap(Application.sitemap:_*))
+    LiftRules.setSiteMap(SiteMap(Application.sitemap:_*))
     
     // setup the load pattern
     S.addAround(DB.buildLoanWrapper)
@@ -49,26 +49,13 @@ object Application {
   val sitemap = 
     Menu(Loc("Home", List("index"), "Home", LocGroup("public"))) ::
     Menu(Loc("About", List("about"), "About", LocGroup("public"))) ::
-    Menu(Loc("Search", List("search"), "Search", LocGroup("public"))) ::
     Menu(Loc("Contact", List("contact"), "Contact", LocGroup("public"))) ::
-    Menu(Loc("Admin", List("admin","index"), "Admin", LocGroup("admin"), User.loginFirst)) ::
-    Menu(Loc("Destinations", List("admin", "destinations"), "Destinations", 
-      LocGroup("admin"), 
-      EarlyResponse(() => Full(RedirectResponse("destination/list"))), 
-      User.loginFirst), 
-      Destination.menus : _*
-    ) ::
+    Menu(Loc("Admin", List("admin","index"), "Admin", LocGroup("admin"))) ::
+    // admin
     Menu(Loc("Suppliers", List("admin", "suppliers"), "Suppliers", 
-      LocGroup("admin"), 
-      EarlyResponse(() => Full(RedirectResponse("supplier/list"))), 
-      User.loginFirst), 
+      LocGroup("admin")), 
       Supplier.menus : _*
-    ) ::
-    Menu(Loc("Users", List("admin", "users"), "Users", 
-      LocGroup("admin"), 
-      EarlyResponse(() => Full(RedirectResponse("/admin/")))), 
-      User.menus : _*
-    ) :: Nil
+    ) :: Customer.menus
     
   
   val database = DBVendor

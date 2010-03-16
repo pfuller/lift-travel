@@ -2,10 +2,7 @@ package example.travel {
 package model {
   
   import net.liftweb.common.{Full,Box,Empty,Failure}
-  import net.liftweb.util.{Log}
-  import net.liftweb.util.Helpers._
   import net.liftweb.mapper._
-  import net.liftweb.http.{S,SHtml}
   import net.liftweb.sitemap.Loc._
   import scala.xml.{NodeSeq,Node}
   
@@ -13,15 +10,24 @@ package model {
       with KeyedMetaMapper[Long, Customer]
       with MetaMegaProtoUser[Customer]{
     
-    override def dbTableName = "users"
+    override def dbTableName = "customers"
     
     // proto user
-    override val basePath = "admin" :: "users" :: Nil
+    override val basePath = "account" :: Nil
     override def homePage = "/"
     override def skipEmailValidation = true
-    
+    override def createUserMenuLocParams = LocGroup("public") :: super.createUserMenuLocParams
     override def screenWrap: Box[Node] = 
-      Full(<lift:surround with="admin" at="content"><lift:bind /></lift:surround>)
+      Full(
+        <lift:surround with="default" at="content">
+          <div id="box1" class="topbg">
+            <lift:bind />
+          </div>
+          <lift:with-param name="sidebar">
+            <lift:embed what="_light_basket" />
+          </lift:with-param>
+        </lift:surround>
+      )
     
     override def fieldOrder = id :: firstName :: lastName :: 
       email :: password :: Nil
@@ -29,6 +35,8 @@ package model {
   }
   class Customer extends MegaProtoUser[Customer] {
     def getSingleton = Customer
+    // helper: get all customer bids
+    // def bidsOn(deal: Long) = Bid.findAll(By(Bid.customer, this.id), By(Bid.deal, deal))
   }
   
 }}

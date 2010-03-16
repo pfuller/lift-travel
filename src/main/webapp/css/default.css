@@ -17,7 +17,7 @@ form {
 
 h1, h2 {
 	margin: 0px 0px 15px 0px;
-	font: bold 16px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font: bold 16px Arial, Helvetica, sans-serif;
 	color: #7E4E18;
 }
 
@@ -112,6 +112,15 @@ a:hover {
 }
 
 /** STYLES */
+
+.navlinks a {
+  color: #d1b698;
+  font-size: 12px;
+  text-decoration: none;
+}
+.navlinks a:hover {
+  color: #bf8232;
+}
 
 .style1 {
 }

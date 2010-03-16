@@ -15,6 +15,9 @@ package model {
     object close_date extends MappedDateTime(this)
     object travel_date extends MappedDateTime(this)
     
+    // relationship
+    object customer extends LongMappedMapper(this, Customer)
+    object deal extends LongMappedMapper(this, Deal)
   }
   
   
