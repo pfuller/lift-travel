@@ -15,6 +15,7 @@ package model {
     object name extends MappedString(this, 150)
     object close_date extends MappedDateTime(this)
     object travel_date extends MappedDateTime(this)
+    object perma_link extends MappedString(this, 150)
     
     // relationships
     object supplier extends LongMappedMapper(this, Supplier)

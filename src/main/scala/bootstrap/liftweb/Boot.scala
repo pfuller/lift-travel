@@ -48,10 +48,10 @@ class Boot extends Loggable {
 object Application {
   val sitemap = 
     Menu(Loc("Home", List("index"), "Home", LocGroup("public"))) ::
-    Menu(Loc("About", List("about"), "About", LocGroup("public"))) ::
-    Menu(Loc("Contact", List("contact"), "Contact", LocGroup("public"))) ::
-    Menu(Loc("Admin", List("admin","index"), "Admin", LocGroup("admin"))) ::
+    Menu(Loc("Search", List("search"), "Search", LocGroup("public"))) ::
+    Menu(Loc("History", List("history"), "History", LocGroup("public"))) ::
     // admin
+    Menu(Loc("Admin", List("admin","index"), "Admin", LocGroup("admin"))) ::
     Menu(Loc("Suppliers", List("admin", "suppliers"), "Suppliers", 
       LocGroup("admin")), 
       Supplier.menus : _*

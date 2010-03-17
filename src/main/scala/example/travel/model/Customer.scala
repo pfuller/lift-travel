@@ -11,6 +11,8 @@ package model {
       with MetaMegaProtoUser[Customer]{
     
     override def dbTableName = "customers"
+    override def fieldOrder = id :: firstName :: lastName :: 
+      email :: password :: Nil
     
     // proto user
     override val basePath = "account" :: Nil
@@ -28,9 +30,6 @@ package model {
           </lift:with-param>
         </lift:surround>
       )
-    
-    override def fieldOrder = id :: firstName :: lastName :: 
-      email :: password :: Nil
    
   }
   class Customer extends MegaProtoUser[Customer] {
