@@ -17,7 +17,7 @@ package model {
     
     // relationship
     object customer extends LongMappedMapper(this, Customer)
-    object deal extends LongMappedMapper(this, Deal)
+    object auction extends LongMappedMapper(this, Auction)
   }
   
   

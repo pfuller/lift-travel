@@ -28,10 +28,10 @@ package model {
     object opening_hours extends MappedText(this)
     
     // relationships
-    object deals extends MappedOneToMany(Deal, Deal.supplier, 
-      OrderBy(Deal.close_date, Descending)) 
-        with Owned[Deal] 
-        with Cascade[Deal] 
+    object auctions extends MappedOneToMany(Auction, Auction.supplier, 
+      OrderBy(Auction.close_date, Descending)) 
+        with Owned[Auction] 
+        with Cascade[Auction] 
   }
   
   

@@ -10,7 +10,7 @@ import net.liftweb.sitemap.Loc._
 import net.liftweb.mapper.{DB,Schemifier,DefaultConnectionIdentifier,StandardDBVendor}
 
 // app imports
-import example.travel.model.{Deal,Supplier,Customer,Bid}
+import example.travel.model.{Auction,Supplier,Customer,Bid}
 // import example.travel.lib.{Helpers}
 
 class Boot extends Loggable {
@@ -30,7 +30,7 @@ class Boot extends Loggable {
     
     // automatically create the tables
     Schemifier.schemify(true, Log.infoF _, 
-      Bid, Deal, Supplier, Customer)
+      Bid, Auction, Supplier, Customer)
     
     // LiftRules.loggedInTest = Full(() => User.loggedIn_?)
     
