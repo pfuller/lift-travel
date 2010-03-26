@@ -6,14 +6,14 @@ package model {
   
   object Bid 
     extends Bid 
-    with LongKeyedMetaMapper[Bid]
+    with LongKeyedMetaMapper[Bid]{
+      override def dbTableName = "bids"
+    }
 
   class Bid extends LongKeyedMapper[Bid] with IdPK {
     def getSingleton = Bid
     // fields
-    object name extends MappedString(this, 150)
-    object close_date extends MappedDateTime(this)
-    object travel_date extends MappedDateTime(this)
+    object amount extends MappedLong(this)
     
     // relationship
     object customer extends LongMappedMapper(this, Customer)

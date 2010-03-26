@@ -29,7 +29,7 @@ class Boot extends Loggable {
     }
     
     // automatically create the tables
-    Schemifier.schemify(true, Log.infoF _, 
+    Schemifier.schemify(true, Schemifier.infoF _, 
       Bid, Auction, Supplier, Customer)
     
     // LiftRules.loggedInTest = Full(() => User.loggedIn_?)
@@ -52,8 +52,7 @@ object Application {
     Menu(Loc("History", List("history"), "History", LocGroup("public"))) ::
     // admin
     Menu(Loc("Admin", List("admin","index"), "Admin", LocGroup("admin"))) ::
-    Menu(Loc("Suppliers", List("admin", "suppliers"), "Suppliers", 
-      LocGroup("admin")), 
+    Menu(Loc("Suppliers", List("admin", "suppliers"), "Suppliers", LocGroup("admin")), 
       Supplier.menus : _*
     ) :: Customer.menus
     
