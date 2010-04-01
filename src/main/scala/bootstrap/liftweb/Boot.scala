@@ -32,6 +32,11 @@ class Boot extends Loggable {
     Schemifier.schemify(true, Schemifier.infoF _, 
       Bid, Auction, Supplier, Customer)
     
+    // setup the 404 handler 
+    LiftRules.uriNotFound.prepend(NamedPF("404handler"){
+      case (req,failure) => NotFoundAsTemplate(ParsePath(List("404"),"html",false,false))
+    })
+    
     // LiftRules.loggedInTest = Full(() => User.loggedIn_?)
     
     // set the application sitemap
