@@ -32,7 +32,7 @@ package model {
       )
    
   }
-  class Customer extends MegaProtoUser[Customer] {
+  class Customer extends MegaProtoUser[Customer] with CreatedUpdated {
     def getSingleton = Customer
     // helper: get all customer bids
     // def bidsOn(deal: Long) = Bid.findAll(By(Bid.customer, this.id), By(Bid.deal, deal))

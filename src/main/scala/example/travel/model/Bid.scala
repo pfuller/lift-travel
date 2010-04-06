@@ -10,14 +10,18 @@ package model {
       override def dbTableName = "bids"
     }
 
-  class Bid extends LongKeyedMapper[Bid] with IdPK {
+  class Bid extends LongKeyedMapper[Bid] with IdPK with CreatedUpdated {
     def getSingleton = Bid
     // fields
     object amount extends MappedLong(this)
     
     // relationship
-    object customer extends LongMappedMapper(this, Customer)
-    object auction extends LongMappedMapper(this, Auction)
+    object customer extends LongMappedMapper(this, Customer){
+      override def dbColumnName = "customer_id"
+    }
+    object auction extends LongMappedMapper(this, Auction){
+      override def dbColumnName = "auction_id"
+    }
   }
   
   

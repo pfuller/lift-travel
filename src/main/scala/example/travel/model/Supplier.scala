@@ -23,7 +23,8 @@ package model {
     override def deleteMenuLocParams = LocGroup("admin") :: Nil
   }
   
-  class Supplier extends LongKeyedMapper[Supplier] with IdPK with OneToMany[Long, Supplier] {
+  class Supplier extends LongKeyedMapper[Supplier] 
+      with IdPK with OneToMany[Long, Supplier] with CreatedUpdated {
     def getSingleton = Supplier
     // fields
     object name extends MappedString(this, 150)

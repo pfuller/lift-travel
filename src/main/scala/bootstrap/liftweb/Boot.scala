@@ -10,7 +10,7 @@ import net.liftweb.sitemap.Loc._
 import net.liftweb.mapper.{DB,Schemifier,DefaultConnectionIdentifier,StandardDBVendor}
 
 // app imports
-import example.travel.model.{Auction,Supplier,Customer,Bid}
+import example.travel.model.{Auction,Supplier,Customer,Bid,Order,OrderAuction}
 // import example.travel.lib.{Helpers}
 
 class Boot extends Loggable {
@@ -30,7 +30,7 @@ class Boot extends Loggable {
     
     // automatically create the tables
     Schemifier.schemify(true, Schemifier.infoF _, 
-      Bid, Auction, Supplier, Customer)
+      Bid, Auction, Supplier, Customer, Order, OrderAuction)
     
     // setup the 404 handler 
     LiftRules.uriNotFound.prepend(NamedPF("404handler"){
@@ -55,18 +55,22 @@ object Application {
     Menu(Loc("Home", List("index"), "Home", LocGroup("public"))) ::
     Menu(Loc("Search", List("search"), "Search", LocGroup("public"))) ::
     Menu(Loc("History", List("history"), "History", LocGroup("public"))) ::
+    Menu(Loc("Auctions", List("auctions"), "Auctions", LocGroup("public"))) ::
+    Menu(Loc("Auction Detail", List("auction"), "Auction Detail", LocGroup("public"), Hidden)) ::
     // admin
     Menu(Loc("Admin", List("admin","index"), "Admin", LocGroup("admin"))) ::
     Menu(Loc("Suppliers", List("admin", "suppliers"), "Suppliers", LocGroup("admin")), 
       Supplier.menus : _*
+    ) :: Menu(Loc("AuctionAdmin", List("admin", "auctions"), "Auctions", LocGroup("admin")),
+      Auction.menus : _*
     ) :: Customer.menus
     
   
   val database = DBVendor
   
   object DBVendor extends StandardDBVendor(
-    Props.get("db.class").openOr("org.apache.derby.jdbc.EmbeddedDriver"),
-    Props.get("db.url").openOr("jdbc:derby:lift_example;create=true"),
+    Props.get("db.class").openOr("com.mysql.jdbc.Driver"),
+    Props.get("db.url").openOr("jdbc:mysql://localhost/liftinaction?user=root"),
     Props.get("db.user"),
     Props.get("db.pass"))
   

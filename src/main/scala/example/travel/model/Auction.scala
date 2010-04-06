@@ -2,6 +2,8 @@ package example.travel {
 package model {
   
   import net.liftweb.common.{Full,Box,Empty,Failure}
+  import net.liftweb.sitemap.Loc._
+  import scala.xml.NodeSeq
   import net.liftweb.mapper._
   
   object Auction 
@@ -9,9 +11,23 @@ package model {
     with LongKeyedMetaMapper[Auction]
     with CRUDify[Long,Auction]{
       override def dbTableName = "auctions"
+      override def fieldOrder = List(name,description,ends_at,
+        outbound_on,inbound_on,flying_from,permanent_link,is_closed)
+      
+      // crudify
+      override def pageWrapper(body: NodeSeq) = 
+        <lift:surround with="admin" at="content">{body}</lift:surround>
+      override def calcPrefix = List("admin",_dbTableNameLC)
+      override def displayName = "Auction"
+      override def showAllMenuLocParams = LocGroup("admin") :: Nil
+      override def createMenuLocParams = LocGroup("admin") :: Nil
+      override def viewMenuLocParams = LocGroup("admin") :: Nil
+      override def editMenuLocParams = LocGroup("admin") :: Nil
+      override def deleteMenuLocParams = LocGroup("admin") :: Nil
+      
     }
 
-  class Auction extends LongKeyedMapper[Auction] with IdPK {
+  class Auction extends LongKeyedMapper[Auction] with IdPK with CreatedUpdated {
     def getSingleton = Auction
     // fields
     object name extends MappedString(this, 150)
@@ -24,7 +40,9 @@ package model {
     object is_closed extends MappedBoolean(this)
     
     // relationships
-    object supplier extends LongMappedMapper(this, Supplier)
+    object supplier extends LongMappedMapper(this, Supplier){
+      override def dbColumnName = "supplier_id"
+    }
     
     // helper: get all the bids for this auction
     def bids = Bid.findAll(By(Bid.auction, this.id), OrderBy(Bid.id, Descending))
