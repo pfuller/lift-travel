@@ -24,7 +24,6 @@ package model {
       override def viewMenuLocParams = LocGroup("admin") :: Nil
       override def editMenuLocParams = LocGroup("admin") :: Nil
       override def deleteMenuLocParams = LocGroup("admin") :: Nil
-      
     }
 
   class Auction extends LongKeyedMapper[Auction] with IdPK with CreatedUpdated {
@@ -42,6 +41,10 @@ package model {
     // relationships
     object supplier extends LongMappedMapper(this, Supplier){
       override def dbColumnName = "supplier_id"
+      override def validSelectValues = 
+        Full(Supplier.findMap(OrderBy(Supplier.name, Ascending)){
+          case s: Supplier => Full(s.id.is -> s.name.is)
+        })
     }
     
     // helper: get all the bids for this auction
