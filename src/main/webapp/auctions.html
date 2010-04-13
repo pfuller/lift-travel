@@ -3,13 +3,13 @@
 <div id="box1" class="topbg">
   <h1>Actions</h1>
   <ol class="auctions">
-    <li class="top">
-      <img src="images/homepage09.jpg" alt="" />
-      fgfgdf
-    </li>
-    <li>Auction 2</li>
-    <li>Auction 3</li>
-    <li class="last">Auction 4</li>
+    <lift:listings.all>
+      <li class="top">
+        <img src="images/homepage09.jpg" alt="" />
+        <a:name /><br />
+        <a:description />
+      </li>
+    </lift:listings.all>
   </ol>
 </div>
 
