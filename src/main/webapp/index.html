@@ -5,23 +5,23 @@
     
     <lift:listings.top>
       <img src="images/homepage09.jpg" alt="" width="72" height="72" class="left" />
-      <p><strong><a:name /></strong><br /><a:description /></p>
+      <p><strong><a:name /></strong><br /><a:description /> <a:link /></p>
     </lift:listings.top>
     
     <a href="/auctions">more auctions &gt; &gt;</a>
   </div>
   
   <!-- this is the home page, so lets spash about a bit -->
-  <lift:with-param name="splash">
+  <lift:bind-at name="splash">
     <lift:embed what="_spash" />
-  </lift:with-param>
+  </lift:bind-at>
   
-  <lift:with-param name="sidebar">
+  <lift:bind-at name="sidebar">
     <lift:embed what="_dark_basket" />
     <div id="box5">
       <a href="#"><img src="/images/homepage07.jpg" alt="" width="214" height="183" /></a>
     </div>
-  </lift:with-param>
+  </lift:bind-at>
   
 </lift:surround>
 
