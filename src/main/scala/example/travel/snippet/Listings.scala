@@ -6,7 +6,7 @@ package snippet {
   import net.liftweb.util.Helpers._
   import net.liftweb.http.{S,DispatchSnippet}
   import net.liftweb.mapper.{MaxRows,By,OrderBy,Descending,StartAt}
-  import net.liftweb.mapper.view.{PaginatedSnippet,MapperPaginator}
+  import net.liftweb.mapper.view.{PaginatedSnippet,MappedPaginator}
   
   class Listings extends PaginatedSnippet[Auction] {
     override def dispatch = {
@@ -15,7 +15,7 @@ package snippet {
       case "paginate" => paginator.paginate _
     }
     
-    lazy val paginator = new MapperPaginator(Auction, Auction.id){
+    lazy val paginator = new MappedPaginator(Auction, Auction.id){
       override def num = 5
     }
     

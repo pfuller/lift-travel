@@ -192,6 +192,14 @@ hr { display: none; }
 .auctions li img {
   padding-top: 15px;
   padding-right: 15px;
+  float: left;
+}
+.auctions li h4{
+  padding:0;  
+  margin: 0;
+}
+.auctions li .description {
+  padding-top: 15px;
 }
 .messages {
   width: 100%;
