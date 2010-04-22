@@ -18,7 +18,7 @@ package snippet {
     }
     private val messageDiv = "messages"
     private val amountInput = "amount"
-    val auction = Auction.find(By(Auction.permanent_link,S.param("auction").openOr("")))
+    val auction = Auction.find(By(Auction.id,S.param("id").map(_.toLong).openOr(0L)))
     
     def show(xhtml: NodeSeq): NodeSeq = auction.map(a => 
       bind("a", xhtml,

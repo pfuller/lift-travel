@@ -47,6 +47,11 @@ class Boot extends Loggable {
     
     // make requests utf-8
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
+    
+    LiftRules.statelessRewrite.append {
+      case RewriteRequest(ParsePath("auction" :: key :: Nil,"",true,_),_,_) =>
+           RewriteResponse("auction" :: Nil, Map("id" -> key.split("-")(0)))
+    }
   }
 }
 
