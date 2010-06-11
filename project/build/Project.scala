@@ -1,15 +1,15 @@
 import sbt._
 import hoffrocket.YuiCompressorPlugin
 
-class LiftTravelProject(info: ProjectInfo) extends DefaultWebProject(info) 
-        with YuiCompressorPlugin with stax.StaxPlugin {
+class LiftTravelProject(info: ProjectInfo) extends DefaultWebProject(info) {
+//        with YuiCompressorPlugin with stax.StaxPlugin {
   // lift
   val webkit = "net.liftweb" % "lift-webkit" % "2.0-SNAPSHOT" % "compile"
   val mapper = "net.liftweb" % "lift-mapper" % "2.0-SNAPSHOT" % "compile"
-  
+
   // stax
-  override def staxApplicationId: String = "lifttravel"
-  override def staxUsername: String = "timperrett"
+//  override def staxApplicationId: String = "lifttravel"
+//  override def staxUsername: String = "timperrett"
   
   override def managedStyle = ManagedStyle.Maven
   

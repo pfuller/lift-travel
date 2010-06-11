@@ -1,0 +1,8 @@
+compile
+update
+sbt compile
+compile
+jetty-run
+
+jetty-stop
+exit

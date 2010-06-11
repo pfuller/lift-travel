@@ -1,0 +1,14 @@
+#Source Dependencies
+#Thu Jun 10 09:53:31 BST 2010
+src\\main\\scala\\example\\travel\\model\\Supplier.scala=src\\main\\scala\\example\\travel\\model\\Auction.scala;src\\main\\scala\\bootstrap\\liftweb\\Boot.scala
+src\\main\\scala\\example\\travel\\model\\Auction.scala=src\\main\\scala\\example\\travel\\snippet\\Details.scala;src\\main\\scala\\example\\travel\\model\\Supplier.scala;src\\main\\scala\\example\\travel\\model\\Bid.scala;src\\main\\scala\\bootstrap\\liftweb\\Boot.scala;src\\main\\scala\\example\\travel\\snippet\\Listings.scala
+src\\main\\scala\\example\\travel\\snippet\\Listings.scala=
+src\\main\\scala\\bootstrap\\liftweb\\StaxLiftFilter.scala=
+src\\main\\scala\\example\\travel\\model\\Bid.scala=src\\main\\scala\\example\\travel\\snippet\\Details.scala;src\\main\\scala\\example\\travel\\model\\Auction.scala;src\\main\\scala\\bootstrap\\liftweb\\Boot.scala
+src\\main\\scala\\bootstrap\\liftweb\\Boot.scala=
+src\\main\\scala\\example\\travel\\snippet\\Details.scala=
+src\\main\\scala\\example\\travel\\model\\OrderAuction.scala=src\\main\\scala\\bootstrap\\liftweb\\Boot.scala;src\\main\\scala\\example\\travel\\model\\Order.scala
+src\\main\\scala\\example\\travel\\model\\Order.scala=src\\main\\scala\\bootstrap\\liftweb\\Boot.scala;src\\main\\scala\\example\\travel\\model\\OrderAuction.scala
+src\\main\\scala\\example\\travel\\comet\\AuctionTimer.scala=
+src\\main\\scala\\example\\travel\\snippet\\HelloWorld.scala=
+src\\main\\scala\\example\\travel\\model\\Customer.scala=src\\main\\scala\\example\\travel\\snippet\\Details.scala;src\\main\\scala\\example\\travel\\model\\Bid.scala;src\\main\\scala\\bootstrap\\liftweb\\Boot.scala;src\\main\\scala\\example\\travel\\model\\Order.scala

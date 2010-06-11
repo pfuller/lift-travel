@@ -1,0 +1,14 @@
+#Source Hashes
+#Thu Jun 10 09:53:31 BST 2010
+src\\main\\scala\\example\\travel\\model\\Supplier.scala=303791ac2ac9d773ebfc3f446ca78d7c390d5da4
+src\\main\\scala\\example\\travel\\model\\Auction.scala=9a59b0bb3914a35029016148afd2c71a2b379cbb
+src\\main\\scala\\example\\travel\\snippet\\Listings.scala=fd96349581136e4811b8f12f0eb72333b3163014
+src\\main\\scala\\bootstrap\\liftweb\\StaxLiftFilter.scala=65aadec9fdcf30e6bd1efa243a8ee13b7f7a7692
+src\\main\\scala\\example\\travel\\model\\Bid.scala=17bd93a146a6fafd75e5c7c51f568ba98c731524
+src\\main\\scala\\bootstrap\\liftweb\\Boot.scala=ef850b83038274b336f5adc9143b257971af916a
+src\\main\\scala\\example\\travel\\snippet\\Details.scala=67f480b4eec9a73d22283fddf14a19ce63eabdc6
+src\\main\\scala\\example\\travel\\model\\OrderAuction.scala=3a3d5e7f5809461a99dffabe6fed562097d0a7a8
+src\\main\\scala\\example\\travel\\model\\Order.scala=4f823ae664da636a0264a008b82951c78833321f
+src\\main\\scala\\example\\travel\\comet\\AuctionTimer.scala=da39a3ee5e6b4b0d3255bfef95601890afd80709
+src\\main\\scala\\example\\travel\\snippet\\HelloWorld.scala=648513d3bc2cab8f3bb2d03f2ee86810c63cf6f0
+src\\main\\scala\\example\\travel\\model\\Customer.scala=aa3492bd85d69a4e0e7c8279483a5f3b8b05067c

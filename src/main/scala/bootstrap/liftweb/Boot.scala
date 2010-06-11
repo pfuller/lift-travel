@@ -78,7 +78,7 @@ object Application {
   
   object DBVendor extends StandardDBVendor(
     Props.get("db.class").openOr("com.mysql.jdbc.Driver"),
-    Props.get("db.url").openOr("jdbc:mysql://localhost/liftinaction?user=root"),
+    Props.get("db.url").openOr("jdbc:mysql://localhost/liftinaction?user=liftinaction"),
     Props.get("db.user"),
     Props.get("db.pass"))
   
